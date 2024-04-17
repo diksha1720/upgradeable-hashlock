@@ -16,9 +16,9 @@ module.exports = {
         },
     },
   
-    polygonMumbai: {
-        url: process.env.POLYGON_MUMBAI_URL,
-        accounts: [process.env.ACCOUNT_KEY , process.env.ACCOUNT1_KEY , process.env.ACCOUNT2_KEY , process.env.ACCOUNT3_KEY , process.env.ACCOUNT4_KEY],
+      sepolia: {
+        url: process.env.SEPOLIA_URL,
+        accounts: [process.env.PRIVATE_KEY ],
       }
 },
 

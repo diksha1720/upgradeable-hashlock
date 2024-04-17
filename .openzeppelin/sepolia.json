@@ -1,0 +1,222 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0x362aC1482cD24F884ce071828790Bf0ea7ac29C0",
+      "txHash": "0x4705add38ae7f22a883636fa479c80e4ec6fa1ace700f20c4ceba5725c369fa8",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "3c8c1da4a9aea4215bab7a7dddfa3fd40169f1cf884c18c8b4e26e5c2012a406": {
+      "address": "0x69Ba37863a5C2219BE9E4C2344cc26EeF416d657",
+      "txHash": "0x0c8159a930d8c93f9c56f8aecf359d8ceb57b815fcdc4923f6b5ff14ef35becd",
+      "layout": {
+        "solcVersion": "0.8.24",
+        "storage": [
+          {
+            "label": "allEscrows",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_struct(EscrowTx)8_storage)dyn_storage",
+            "contract": "HashLock",
+            "src": "contracts/HashLock.sol:13"
+          },
+          {
+            "label": "allBalances",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "HashLock",
+            "src": "contracts/HashLock.sol:15"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_struct(EscrowTx)8_storage)dyn_storage": {
+            "label": "struct HashLock.EscrowTx[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(EscrowTx)8_storage": {
+            "label": "struct HashLock.EscrowTx",
+            "members": [
+              {
+                "label": "depositSecret",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "isActive",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "namespaces": {}
+      }
+    },
+    "e129dada5dfcd30d12c52ed596147adac9473415cb2be5a055e95b818b31b8ec": {
+      "address": "0x412e198048829F5cb6c02EEe7c21e2d91b60BdA0",
+      "txHash": "0xe77feb24b30be3ce6ca273e026da19c89130d09650308633a73920cc0d4a43cf",
+      "layout": {
+        "solcVersion": "0.8.24",
+        "storage": [
+          {
+            "label": "allEscrows",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_struct(EscrowTx)8_storage)dyn_storage",
+            "contract": "HashLockV2",
+            "src": "contracts/HashLockV2.sol:13"
+          },
+          {
+            "label": "allBalances",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "HashLockV2",
+            "src": "contracts/HashLockV2.sol:14"
+          },
+          {
+            "label": "userCommits",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_mapping(t_uint256,t_struct(Commitment)31_storage)",
+            "contract": "HashLockV2",
+            "src": "contracts/HashLockV2.sol:26"
+          },
+          {
+            "label": "noOfBlocks",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256",
+            "contract": "HashLockV2",
+            "src": "contracts/HashLockV2.sol:27"
+          },
+          {
+            "label": "owner",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_address",
+            "contract": "HashLockV2",
+            "src": "contracts/HashLockV2.sol:28"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_struct(EscrowTx)8_storage)dyn_storage": {
+            "label": "struct HashLockV2.EscrowTx[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Commitment)31_storage)": {
+            "label": "mapping(uint256 => struct HashLockV2.Commitment)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Commitment)31_storage": {
+            "label": "struct HashLockV2.Commitment",
+            "members": [
+              {
+                "label": "commitHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "revealStartBlock",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "revealEndBlock",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "revealed",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(EscrowTx)8_storage": {
+            "label": "struct HashLockV2.EscrowTx",
+            "members": [
+              {
+                "label": "depositSecret",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "isActive",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "namespaces": {}
+      }
+    }
+  }
+}

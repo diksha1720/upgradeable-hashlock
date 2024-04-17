@@ -10,11 +10,9 @@ contract HashLockV2{
         bool isActive;
     }
 
-       
+    EscrowTx[] private allEscrows;
     mapping(address => uint256) public allBalances;
     event FundsDeposited(address indexed sender, uint256 indexed txIndex);
-        EscrowTx[] private allEscrows;
-
 
     struct Commitment{
             // uint256 escrowId;
