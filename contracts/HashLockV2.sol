@@ -11,7 +11,6 @@ contract HashLockV2{
     }
 
     EscrowTx[] private allEscrows;
-    mapping(address => uint256) public allBalances;
     event FundsDeposited(address indexed sender, uint256 indexed txIndex);
 
     struct Commitment{
@@ -24,8 +23,6 @@ contract HashLockV2{
 
     // Commitment[] private userCommits;
     mapping(uint256 => Commitment) public userCommits;
-    uint256 public noOfBlocks;
-    address owner;
 
     function deposit(bytes32 _secret) external payable{
         uint256 txIndex = allEscrows.length;
@@ -33,19 +30,20 @@ contract HashLockV2{
         emit FundsDeposited(msg.sender, txIndex);
     }
 
-    function withdraw(string memory _password, uint256 _txIndex) public {
+    function withdraw(string memory _password, uint256 _txIndex) internal {
         require(_txIndex < allEscrows.length, "Escrow doesn't exist");
         require(keccak256(abi.encodePacked(_password)) == allEscrows[_txIndex].depositSecret, "Invalid _password provided");
         require(allEscrows[_txIndex].isActive, "Escrow not active");
+        require(userCommits[_txIndex].revealed, "user required to reveal the commit to accesss"); //changed the implementation of withdraw function in the upgraded contract
         allEscrows[_txIndex].isActive = false;
         (bool success, ) = (msg.sender).call{value : (allEscrows[_txIndex].amount)}("");
         require(success, "withdraw failed");
     }
 
-    function commit(uint256 _txIndex, bytes32 _hash) external{
+    function commit(uint256 _txIndex, bytes32 _hash, uint _noOfBlocks) external{
         require(_txIndex < allEscrows.length, "Escrow doesn't exist");
         require(!userCommits[_txIndex].revealed, "commit already revealed");
-        userCommits[_txIndex] = Commitment({ commitHash :_hash , revealStartBlock : block.number, revealEndBlock : block.number + noOfBlocks,revealed : false });
+        userCommits[_txIndex] = Commitment({ commitHash :_hash , revealStartBlock : block.number, revealEndBlock : block.number + _noOfBlocks,revealed : false });
     }
 
     function reveal(uint _txIndex, string memory _password, string memory _salt) external{
@@ -54,13 +52,9 @@ contract HashLockV2{
         require(!currentCommit.revealed, "commit already revealed");
         require(block.number > currentCommit.revealStartBlock && block.number <= currentCommit.revealEndBlock, "reveal time exceeded");
         require(keccak256(abi.encodePacked(_password, _salt)) == currentCommit.commitHash, "hash not matching");
-        currentCommit.revealed = true;
+        userCommits[_txIndex].revealed = true;
         withdraw(_password, _txIndex);
     }
 
-    function setNoOfBlocks(uint256 _blocks) external {
-        require(msg.sender == owner, "Unauthorized");
-        noOfBlocks = _blocks;
-    }
 
 }

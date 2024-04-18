@@ -12,7 +12,6 @@ contract HashLock{
 
     EscrowTx[] private allEscrows;
     
-    mapping(address => uint256) public allBalances;
     event FundsDeposited(address indexed sender, uint256 indexed txIndex);
 
     function deposit(bytes32 _secret) external payable{
