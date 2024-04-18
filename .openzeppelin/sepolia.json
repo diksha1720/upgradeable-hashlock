@@ -1,0 +1,174 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0xc5147309E732A0C90Cd20847aF740541144237aE",
+      "txHash": "0xbf036378ea08460835a075ac66afcad53d484cfd1e8e3366fda958a6b871b777",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "711eb4701d4e89852d1809416c2670fc3c2ba742a9f5be27abbccabe12c970fa": {
+      "address": "0x12D03d77b635C2861c9E6B96912e01eA32cf6FD1",
+      "txHash": "0xa314744aced57d49a14b9c2f7ca9af33606a42c3f1a44a85159d42b6d18fa954",
+      "layout": {
+        "solcVersion": "0.8.24",
+        "storage": [
+          {
+            "label": "allEscrows",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_struct(EscrowTx)8_storage)dyn_storage",
+            "contract": "HashLock",
+            "src": "contracts/HashLock.sol:13"
+          }
+        ],
+        "types": {
+          "t_array(t_struct(EscrowTx)8_storage)dyn_storage": {
+            "label": "struct HashLock.EscrowTx[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_struct(EscrowTx)8_storage": {
+            "label": "struct HashLock.EscrowTx",
+            "members": [
+              {
+                "label": "depositSecret",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "isActive",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "namespaces": {}
+      }
+    },
+    "62dbf60d1d943038d03b0f42a3c2aae497131b8ede2034aef29066652043461f": {
+      "address": "0x4E332659712e27Da4CB22171D9aC13564d60FfbF",
+      "txHash": "0x24e917ff5b91e6d0c6572f4dea0926100fd27fd8fb69daef4604bc05577fb901",
+      "layout": {
+        "solcVersion": "0.8.24",
+        "storage": [
+          {
+            "label": "allEscrows",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_array(t_struct(EscrowTx)8_storage)dyn_storage",
+            "contract": "HashLockV2",
+            "src": "contracts/HashLockV2.sol:13"
+          },
+          {
+            "label": "userCommits",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_uint256,t_struct(Commitment)27_storage)",
+            "contract": "HashLockV2",
+            "src": "contracts/HashLockV2.sol:25"
+          }
+        ],
+        "types": {
+          "t_array(t_struct(EscrowTx)8_storage)dyn_storage": {
+            "label": "struct HashLockV2.EscrowTx[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(Commitment)27_storage)": {
+            "label": "mapping(uint256 => struct HashLockV2.Commitment)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Commitment)27_storage": {
+            "label": "struct HashLockV2.Commitment",
+            "members": [
+              {
+                "label": "commitHash",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "revealStartBlock",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "revealEndBlock",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "revealed",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_struct(EscrowTx)8_storage": {
+            "label": "struct HashLockV2.EscrowTx",
+            "members": [
+              {
+                "label": "depositSecret",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "amount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "isActive",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "2"
+              }
+            ],
+            "numberOfBytes": "96"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        },
+        "namespaces": {}
+      }
+    }
+  }
+}

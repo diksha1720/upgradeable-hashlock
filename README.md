@@ -1,13 +1,17 @@
-# Sample Hardhat Project
+Deployed contracts on sepolia testnet :
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+TransparentUpgradeableProxy:
 
-Try running some of the following tasks:
+https://sepolia.etherscan.io/address/0xc5147309E732A0C90Cd20847aF740541144237aE
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+Proxy Admin :
+
+https://sepolia.etherscan.io/address/0x63edbC8ed3fF881c88d854753702101163feF320
+
+HashLock1Contract : (Version 1)
+
+https://sepolia.etherscan.io/address/0x12D03d77b635C2861c9E6B96912e01eA32cf6FD1#code
+
+HashLock2Contract : (Version2 )
+
+https://sepolia.etherscan.io/address/0x4e332659712e27da4cb22171d9ac13564d60ffbf#code
